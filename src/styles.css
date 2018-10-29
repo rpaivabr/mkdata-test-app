@@ -1,1 +1,123 @@
 /* You can add global styles to this file, and also import other style files */
+
+body {
+    color: #555;
+  }
+  
+  .box-header {
+    color: inherit;
+  }
+  
+  /*
+   * Component: Place Info Box
+   * -------------------
+   */
+  .place-info-box {
+    color: #555;
+    display: block;
+    min-height: 120px;
+    background: #fff;
+    width: 100%;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+    border-radius: 2px;
+    margin-bottom: 15px;
+  }
+  .place-info-box.inactive {
+    background: #ddd;
+  }
+  .place-info-box small {
+    font-size: 14px;
+  }
+  .place-info-box .progress {
+    background: rgba(0, 0, 0, 0.2);
+    margin: 5px -10px 5px -10px;
+    height: 2px;
+  }
+  .place-info-box .progress,
+  .place-info-box .progress .progress-bar {
+    border-radius: 0;
+  }
+  .place-info .progress .progress-bar {
+    background: #fff;
+  }
+  .place-info-box-icon {
+    border-top-left-radius: 2px;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 2px;
+    display: block;
+    float: left;
+    /*height: 120px;*/
+    width: 100px;
+    padding: 15px 0 0 15px;
+    text-align: center;
+    /* background: rgba(0, 0, 0, 0.2); */
+  }
+  .place-info-box-icon > img {
+    max-width: 100%;
+    /*border-right: 1px solid rgba(0, 0, 0, 0.1);*/
+  }
+  .place-info-box-content {
+    padding: 5px 10px;
+    margin-left: 120px;
+  }
+  .place-info-box-detail {
+    display: block;
+    font-size: 14px;
+    margin-bottom: 5px;
+    width: 100%;
+  }
+  
+  .place-info-box-text {
+    display: block;
+    font-size: 18px;
+    font-weight: bold;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    width: 80%;
+    float: left
+  }
+  
+  .place-info-box-star {
+    display: block;
+    font-size: 18px;
+    font-weight: bold;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-bottom: 10px;
+    width: 20%;
+    float: right;
+  }
+  .place-info-box-more {
+    display: block;
+  }
+  .progress-description {
+    margin: 0;
+  }
+  
+  /* Detail For restaurant */
+
+.box-img-detail {
+    width: 120px;
+    height: 120px;
+}
+
+.box-body dl {
+  font-size: 18px;
+}
+
+.search-bar {
+
+}
+
+.form-control-feedback.btn-primary{
+  width: 100px;
+  z-index: 1000;
+}
+.form-control-feedback.btn-primary:hover{
+  cursor: pointer;
+}

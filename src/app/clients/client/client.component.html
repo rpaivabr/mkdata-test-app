@@ -1,0 +1,16 @@
+<a [routerLink]="['/clients', client.id]">
+  <div class="place-info-box" [class.inactive]="client.status === 'false'">
+    <span class="place-info-box-icon"><img src="./assets/img/user.jpg" /></span>
+
+    <div class="place-info-box-content">
+      <span class="place-info-box-text">{{client.name}}</span>
+      <span class="place-info-box-star">{{client.type}}</span>
+      <span class="place-info-box-detail">Email: {{client.email}}</span>
+      <span class="place-info-box-detail" *ngIf="client.type === 'PF'">CPF: {{client.cpf}}</span>
+      <span class="place-info-box-detail" *ngIf="client.type === 'PF'">RG: {{client.rg}}</span>
+      <span class="place-info-box-detail" *ngIf="client.type === 'PJ'">CNPJ: {{client.cnpj}}</span>
+      <span class="place-info-box-detail" *ngIf="client.type === 'PJ'">Insc. Est.: {{client.cnpj}}</span>
+    </div>
+    <!-- /.info-box-content -->
+  </div>
+</a>

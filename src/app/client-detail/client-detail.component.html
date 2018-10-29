@@ -1,0 +1,125 @@
+<!-- INÍCIO DO CONTEÚDO -->
+      <section class="content-header">
+        <h1>
+
+        </h1>
+      </section>
+
+
+      <section class="content">
+
+        <div class="row">
+            <div class="col-xs-12">
+              <div class="box box-solid">
+                <div class="box-header with-border">
+                  <i class="fa fa-user"></i>
+                  <h3 class="box-title" *ngIf="new">Novo Usuário</h3>
+                  <h3 class="box-title" *ngIf="!new">Editar Usuário</h3>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body">
+                  <div class="col-sm-3 col-xs-12">
+                    <img class="box-img-detail" src="./assets/img/user.jpg" />
+                  </div>
+
+                  <div class="col-sm-9 col-xs-12">
+                    <form [formGroup]="clientForm">
+                      <mt-input-container [showTip]="false">
+                        <input type="text" formControlName="name" class="form-control" id="input_name"
+                          placeholder="Nome">
+                        <span class="glyphicon glyphicon-user form-control-feedback"></span>
+                      </mt-input-container>
+                      <mt-input-container [showTip]="false">
+                        <input type="text" formControlName="email" class="form-control" id="input_email"
+                          placeholder="Email">
+                        <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+                      </mt-input-container>
+                      <div formArrayName="telefones">
+                        <div *ngFor="let telefone of clientForm.controls.telefones.controls; let i=index">
+                          <mt-input-container [showTip]="false">
+                            <input type="text" formControlName="{{i}}" class="form-control" id="input_tel_{{i+1}}"
+                              placeholder="Telefone {{i+1}}" mask="(00) 0000-00000">
+                            <span class="glyphicon glyphicon-phone form-control-feedback"></span>
+                          </mt-input-container>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="pull-right col-xs-4 col-md-2">
+                          <a class="btn btn-primary btn-block btn-flat" (click)="insertPhone()" id="ins_tel">+ Telefone</a><br>
+                        </div>
+                        <div class="pull-right col-xs-4 col-md-2">
+                          <a class="btn btn-danger btn-block btn-flat" (click)="removePhone()" id="del_tel"
+                            *ngIf="telefonesLength !== 0">- Telefone</a>
+                        </div>
+                      </div>
+                      <mt-input-container [showTip]="false">
+                        <select class="form-control" formControlName="type" id="select_type">
+                          <option value="PF" selected="selected">PF</option>
+                          <option value="PJ">PJ</option>
+                        </select>
+                        <span class="glyphicon glyphicon-briefcase form-control-feedback"></span>
+                      </mt-input-container>
+                      <mt-input-container [showTip]="false" *ngIf="type === 'PF'">
+                        <input type="text" formControlName="cpf" class="form-control" id="input_cpf"
+                          placeholder="CPF" mask="000.000.000-00">
+                        <span class="glyphicon glyphicon-duplicate form-control-feedback"></span>
+                      </mt-input-container>
+                      <mt-input-container [showTip]="false" *ngIf="type === 'PF'">
+                        <input type="text" formControlName="rg" class="form-control" id="input_rg"
+                          placeholder="RG">
+                        <span class="glyphicon glyphicon-duplicate form-control-feedback"></span>
+                      </mt-input-container>
+                      <mt-input-container [showTip]="false" *ngIf="type === 'PJ'">
+                        <input type="text" formControlName="cnpj" class="form-control" id="input_cnpj"
+                          placeholder="CNPJ" mask="00.000.000/0000-00">
+                        <span class="glyphicon glyphicon-duplicate form-control-feedback"></span>
+                      </mt-input-container>
+                      <mt-input-container [showTip]="false" *ngIf="type === 'PJ'">
+                        <input type="text" formControlName="ie" class="form-control" id="input_ie"
+                          placeholder="Inscrição estadual">
+                        <span class="glyphicon glyphicon-duplicate form-control-feedback"></span>
+                      </mt-input-container>
+                      <mt-input-container [showTip]="false">
+                        <select class="form-control" formControlName="status" id="select_status">
+                          <option value="true" selected="selected">Ativo</option>
+                          <option value="false">Inativo</option>
+                        </select>
+                        <span class="glyphicon glyphicon-cog form-control-feedback"></span>
+                      </mt-input-container>
+                      <mt-input-container [showTip]="false">
+                        <select class="form-control" formControlName="group" id="select_group">
+                          <ng-container *ngFor="let letter of groupNames">
+                              <option [value]="letter">{{letter}}</option>
+                          </ng-container>
+                        </select>
+                        <span class="glyphicon glyphicon-tasks form-control-feedback"></span>
+                      </mt-input-container>
+                      <div class="row">
+                        <!-- /.col -->
+                        <div class="col-xs-offset-4 col-xs-4">
+                          <button type="button" id="delete" (click)="delete()" 
+                            [disabled]="clientForm.invalid" *ngIf="!new" class="btn btn-danger btn-block btn-flat">Deletar</button>
+                        </div>
+                        <div class="col-xs-4">
+                            <button type="submit" (click)="save()" [disabled]="clientForm.invalid" class="btn btn-primary btn-block btn-flat">Gravar</button>
+                          </div>
+                        <!-- /.col -->
+                      </div>                      
+                    </form>
+                  </div>
+                </div>
+                <!-- /.box-body -->
+                <div class="box-footer detail-footer">
+                </div>
+              </div>
+            </div>
+            <!-- /.col-xs-12 -->
+
+        </div>
+
+        <div class="row">
+            <router-outlet></router-outlet>
+        </div>
+
+      </section>
+      <!-- FIM DO CONTEÚDO -->

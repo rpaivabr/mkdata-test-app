@@ -1,0 +1,52 @@
+<!-- INíCIO do CONTEÚDO -->
+      <section class="content-header">
+        <div class="row">
+          <div class="col-xs-8 col-md-10">
+            <h3>Todos os Clientes</h3>
+          </div>
+          <div class="col-xs-4 col-md-2">
+            <a routerLink="/clients/new" class="btn btn-primary btn-block btn-flat" id="new_user">+ Criar novo</a>
+          </div>
+        </div>
+
+        <!-- barra de busca-->
+        <div class="row" style="margin-top: 5px;">
+          <div class="col-xs-4 col-md-2 search-bar">
+            <a class="btn btn-block btn-flat" (click)="filtrarPorStatus('all')" id="filter_all"
+            [class.btn-primary]="active === 'all'" [class.btn-default]="active !== 'all'">Todos</a><br>
+          </div>
+          <div class="col-xs-4 col-md-2 search-bar">
+            <a class="btn btn-block btn-flat" (click)="filtrarPorStatus('active')" id="filter_active"
+            [class.btn-success]="active === 'active'" [class.btn-default]="active !== 'active'">Ativos</a>
+          </div>
+          <div class="col-xs-4 col-md-2 search-bar">
+            <a class="btn btn-block btn-flat" (click)="filtrarPorStatus('inactive')" id="filter_inactive"
+            [class.btn-warning]="active === 'inactive'" [class.btn-default]="active !== 'inactive'">Inativos</a>
+          </div>
+          <div class="col-xs-12 col-md-6 search-bar">
+            <form [formGroup]="searchForm">
+              <div class="form-group">
+                  <input type="text" formControlName="search" class="form-control" id="search" placeholder="Pesquise pelo nome...">
+              </div>
+            </form>
+          </div>
+        </div>
+
+      </section>
+
+
+      <section class="content">
+        <div class="row">
+                <div *ngFor="let client of filteredNameClients" class="col-sm-6 col-xs-12">
+                    <mt-client [client]="client"></mt-client>
+                </div>
+                <div *ngIf="clients?.length === 0" class="col-xs-12">
+                  <p class="lead text-center">
+                    Não foram encontrados itens para a sua busca.
+                  </p>
+                </div>
+          </div>
+
+      </section>
+
+      <!-- FIM  do CONTEÚDO -->
